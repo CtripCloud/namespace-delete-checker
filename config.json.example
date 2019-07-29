@@ -1,0 +1,16 @@
+{
+	"NsResourceCheckBL": [
+		{
+			"groupVersion": "v1",
+			"name": "serviceaccounts"
+		},
+		{
+			"groupVersion": "v1",
+			"name": "secrets"
+		},
+		{
+			"groupVersion": "v1",
+			"name": "configmaps"
+		}
+	]
+}
