@@ -25,11 +25,11 @@ rules:
     resources:
       - '*'
     verbs:
-      - 'get'
+      - list
   - nonResourceURLs:
       - '*'
     verbs:
-      - 'get'
+      - list
 ---
 apiVersion: v1
 kind: ServiceAccount
