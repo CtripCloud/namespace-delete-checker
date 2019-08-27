@@ -1,0 +1,13 @@
+apiVersion: v1
+data:
+  config.json: |
+    {
+           "NsResourceCheckBL":[
+                {"Name":"secrets","GroupVersion":"v1"},
+                {"Name":"serviceaccounts","GroupVersion":"v1"}
+           ]
+    }
+kind: ConfigMap
+metadata:
+  name: namespace-delete-checker-config
+  namespace: default

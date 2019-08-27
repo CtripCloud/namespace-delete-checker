@@ -67,7 +67,7 @@ func NamespaceDeleteCheck(c *gin.Context) {
 		return
 	}
 
-	blackListResources := cfg.Config().NsResourceCheckBL
+	blackListResources := cfg.Get().NsResourceCheckBL
 
 	for _, namespacedResource := range namespacedResources {
 		for _, resource := range namespacedResource.APIResources {
@@ -79,7 +79,7 @@ func NamespaceDeleteCheck(c *gin.Context) {
 			}
 			success, err := resourceExistInNamespace(namespace, resource, *namespacedResource)
 			if err != nil {
-				logrus.WithError(err).Errorf("get resource: %s in this namespace: %s error", resource.Name, namespace)
+				logrus.WithError(err).Errorf("get resource: %s,groupversion: %s in this namespace: %s error", resource.Name, namespacedResource.GroupVersion, namespace)
 				responseAdmissionReview.Response = toResponseAdmissionResponse(false, fmt.Sprintf("get resource %s in this namespace %s error %s", resource.Name, namespace, err.Error()))
 				return
 			}

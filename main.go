@@ -52,7 +52,12 @@ func main() {
 	logger.MustInit()
 	defer logger.Close()
 
-	cfg.MustInit(params.cfgFile)
+	var err error
+	if err = cfg.Init(params.cfgFile, logrus.StandardLogger()); err != nil {
+		logrus.Fatalf("config init failed with error %v", err)
+	}
+	defer cfg.Fini()
+
 	k8s.MustInit()
 
 	srv := &http.Server{
